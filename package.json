@@ -1,8 +1,5 @@
 {
 	"scripts": {
 		"version": "node scripts/version.js"
-	},
-	"dependencies": {
-		"sonner": "^2.0.7"
 	}
 }

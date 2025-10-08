@@ -82,16 +82,36 @@ pnpm tauri dev
 pnpm tauri build
 ```
 
-Le build génère 3 formats de packages :
-- **`.deb`** - Pour Ubuntu/Debian (WSL)
-- **`.rpm`** - Pour RedHat/Fedora 
-- **`.AppImage`** - Format portable (fonctionne partout)
+Le build génère plusieurs formats de packages :
+
+### 🚀 Installation rapide (recommandé)
+Vous pouvez télécharger les releases pré-compilées directement depuis GitHub :
+- Visitez la page [Releases](https://github.com/votre-username/zsh-config-manager/releases)
+- Téléchargez le paquet `.deb` pour Ubuntu/Debian
+
+### 🔨 Build manuel (autres formats)
+Pour construire manuellement l'application avec d'autres formats :
+
+```bash
+# Build pour tous les formats Linux disponibles
+pnpm tauri build --bundles deb,appimage
+
+# Build pour un format spécifique
+pnpm tauri build --bundles deb      # Ubuntu/Debian
+pnpm tauri build --bundles appimage # Portable Linux
+```
 
 Fichiers générés dans `app/src-tauri/target/release/` :
 - `app` - Binaire exécutable direct
-- `bundle/deb/ZSH Config Manager_0.1.0_amd64.deb`
-- `bundle/rpm/ZSH Config Manager-0.1.0-1.x86_64.rpm`
-- `bundle/appimage/ZSH Config Manager_0.1.0_amd64.AppImage`
+- `bundle/deb/ZSH Config Manager_X.X.X_amd64.deb` - Pour Ubuntu/Debian
+- `bundle/appimage/ZSH Config Manager_X.X.X_amd64.AppImage` - Portable Linux
+
+### 📦 Formats disponibles
+- **`.deb`** - Pour Ubuntu/Debian (recommandé, disponible dans les releases GitHub)
+- **`.AppImage`** - Format portable Linux (build manuel requis)
+- **Binaire direct** - Exécutable sans installation (build manuel requis)
+
+**Note** : Les releases GitHub incluent uniquement le format `.deb` pour optimiser la CI. Pour les autres formats, utilisez le build manuel.
 
 ## 📦 Configuration
 
