@@ -1,0 +1,25 @@
+# Local machine-specific files (not versioned)
+*.local.zsh
+.zshrc.local
+.zshrc.secrets
+
+# ZSH history and cache files
+.zsh_history
+.zcompdump*
+
+# Backup files
+*.backup
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node modules
+node_modules/

@@ -1,0 +1,12 @@
+# ~/.zsh/aliases.local.zsh
+# Machine-specific aliases
+# This file is NOT versioned
+
+# ============================================
+# MACHINE-SPECIFIC ALIASES
+# ============================================
+
+# Add your machine-specific aliases here
+# Examples:
+# alias myproject="cd ~/specific/path && pnpm run dev"
+# alias backup="rsync -av ~/important /backup/location"

@@ -1,0 +1,20 @@
+# ~/.zsh/functions.local.zsh
+# Machine-specific functions
+# This file is NOT versioned
+
+# ============================================
+# MACHINE-SPECIFIC FUNCTIONS
+# ============================================
+
+# Kimi AI wrapper function
+kimi() {
+    if [[ -z "${KIMI_ANTHROPIC_AUTH_TOKEN:-}" ]]; then
+        echo "KIMI_ANTHROPIC_AUTH_TOKEN n'est pas defini" >&2
+        return 1
+    fi
+    export ANTHROPIC_AUTH_TOKEN="$KIMI_ANTHROPIC_AUTH_TOKEN"
+    export ANTHROPIC_BASE_URL="${KIMI_ANTHROPIC_BASE_URL:-https://api.moonshot.ai/anthropic}"
+    claude "$@"
+}
+
+# Add your other machine-specific functions here
