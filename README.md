@@ -232,12 +232,42 @@ pnpm tauri dev
 # Build de production
 pnpm tauri build
 
+# Gestion de version
+pnpm run version x.x.x    # Met à jour tous les fichiers de version
+
 # Vérification TypeScript
 pnpm exec tsc --noEmit
 
 # Vérification Rust
 cargo check
 ```
+
+### Gestion des versions
+
+Pour créer une nouvelle version :
+
+1. **Mettre à jour les fichiers de version**
+```bash
+pnpm run version 0.2.0
+```
+
+2. **Committer les changements**
+```bash
+git commit -am "chore: bump version to 0.2.0"
+```
+
+3. **Créer et pousser le tag de release**
+```bash
+git tag release-0.2.0
+git push origin main --tags
+```
+
+Le script `version` met automatiquement à jour :
+- `app/src-tauri/Cargo.toml`
+- `app/src-tauri/tauri.conf.json`
+- `app/package.json`
+
+Le workflow GitHub Actions créera automatiquement une release sur GitHub lors du push d'un tag `release-x.x.x`.
 
 ### Architecture
 
