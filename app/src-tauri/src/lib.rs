@@ -10,6 +10,7 @@ use commands::plugin::{get_plugins, get_popular_plugins, add_plugin, remove_plug
 pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
+        .plugin(tauri_plugin_window_state::Builder::default().build())
         .invoke_handler(tauri::generate_handler![
             list_aliases,
             add_alias,
