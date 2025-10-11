@@ -8,8 +8,16 @@ import { FunctionsTab } from "@/components/tabs/FunctionsTab";
 import { ConfigTab } from "@/components/tabs/ConfigTab";
 import { ExportTab } from "@/components/tabs/ExportTab";
 import { PluginsTab } from "@/components/tabs/PluginsTab";
+import { UpdateButton } from "@/components/UpdateButton";
+import { AppUpdater } from "@/lib/updater";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    // Vérifier les mises à jour au démarrage
+    AppUpdater.getInstance().autoCheckOnStartup();
+  }, []);
+
   return (
     <ThemeProvider>
       <div className="min-h-screen bg-background">
@@ -21,7 +29,10 @@ function App() {
                 <Terminal className="h-6 w-6 transition-transform duration-200 group-hover:scale-110 group-hover:text-primary" />
                 <h1 className="text-2xl font-bold transition-colors duration-200 group-hover:text-primary">ZSH Config Manager</h1>
               </div>
-              <ThemeToggle />
+              <div className="flex items-center gap-3">
+                <UpdateButton />
+                <ThemeToggle />
+              </div>
             </div>
             <p className="text-sm text-muted-foreground mt-1 transition-colors duration-200">
               Manage your ZSH configuration across machines
