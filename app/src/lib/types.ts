@@ -51,3 +51,15 @@ export interface ExportData {
 }
 
 export type MergeStrategy = 'overwrite' | 'keep' | 'ask';
+
+export type PluginManager = 'oh-my-zsh' | 'zinit' | 'custom';
+
+export interface Plugin {
+  name: string;
+  enabled: boolean;
+  installed: boolean;
+  description?: string;
+  repository?: string;
+  manager: PluginManager;
+  install_command?: string;
+}
