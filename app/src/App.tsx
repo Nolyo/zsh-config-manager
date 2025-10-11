@@ -1,12 +1,13 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { Toaster } from "@/components/ui/toaster";
-import { Terminal, Settings, Download, FunctionSquare } from "lucide-react";
+import { Terminal, Settings, Download, FunctionSquare, Puzzle } from "lucide-react";
 import { ThemeProvider } from "@/contexts/theme-context";
 import { AliasesTab } from "@/components/tabs/AliasesTab";
 import { FunctionsTab } from "@/components/tabs/FunctionsTab";
 import { ConfigTab } from "@/components/tabs/ConfigTab";
 import { ExportTab } from "@/components/tabs/ExportTab";
+import { PluginsTab } from "@/components/tabs/PluginsTab";
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
       <main className="container mx-auto px-6 py-8">
         <Tabs defaultValue="aliases" className="w-full">
           <div className="flex justify-center mb-8">
-            <TabsList className="grid w-full max-w-2xl grid-cols-4">
+            <TabsList className="grid w-full max-w-3xl grid-cols-5">
               <TabsTrigger value="aliases" className="gap-2">
                 <Terminal className="h-4 w-4" />
                 Aliases
@@ -40,6 +41,10 @@ function App() {
               <TabsTrigger value="functions" className="gap-2">
                 <FunctionSquare className="h-4 w-4" />
                 Functions
+              </TabsTrigger>
+              <TabsTrigger value="plugins" className="gap-2">
+                <Puzzle className="h-4 w-4" />
+                Plugins
               </TabsTrigger>
               <TabsTrigger value="config" className="gap-2">
                 <Settings className="h-4 w-4" />
@@ -60,6 +65,11 @@ function App() {
           {/* Functions Tab */}
           <TabsContent value="functions" className="animate-in fade-in-50 duration-300">
             <FunctionsTab />
+          </TabsContent>
+
+          {/* Plugins Tab */}
+          <TabsContent value="plugins" className="animate-in fade-in-50 duration-300">
+            <PluginsTab />
           </TabsContent>
 
           {/* Config Tab */}
