@@ -3,6 +3,7 @@ import { toast } from "sonner";
 import { Plus, Search, Pencil, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import {
   Table,
@@ -177,7 +178,10 @@ export function AliasesTab() {
             Manage your ZSH aliases across shared and local configurations
           </p>
         </div>
-        <Button onClick={() => setAddDialogOpen(true)}>
+        <Button
+          onClick={() => setAddDialogOpen(true)}
+          className="shadow-lg hover:shadow-xl transition-all hover:scale-105 font-semibold"
+        >
           <Plus className="mr-2 h-4 w-4" />
           Add Alias
         </Button>
@@ -305,13 +309,14 @@ export function AliasesTab() {
             </div>
             <div className="space-y-2">
               <Label htmlFor="add-command">Command</Label>
-              <Input
+              <Textarea
                 id="add-command"
                 placeholder="e.g., ls -lah"
                 value={formData.command}
                 onChange={(e) =>
                   setFormData({ ...formData, command: e.target.value })
                 }
+                rows={3}
               />
             </div>
             <div className="space-y-2">
@@ -321,7 +326,11 @@ export function AliasesTab() {
                   type="button"
                   variant={formData.shared ? "default" : "outline"}
                   onClick={() => setFormData({ ...formData, shared: true })}
-                  className="flex-1"
+                  className={`flex-1 transition-all ${
+                    formData.shared
+                      ? "ring-2 ring-primary/30 shadow-lg font-semibold"
+                      : "opacity-70 hover:opacity-100"
+                  }`}
                 >
                   Shared (versioned)
                 </Button>
@@ -329,7 +338,11 @@ export function AliasesTab() {
                   type="button"
                   variant={!formData.shared ? "default" : "outline"}
                   onClick={() => setFormData({ ...formData, shared: false })}
-                  className="flex-1"
+                  className={`flex-1 transition-all ${
+                    !formData.shared
+                      ? "ring-2 ring-primary/30 shadow-lg font-semibold"
+                      : "opacity-70 hover:opacity-100"
+                  }`}
                 >
                   Local (this machine)
                 </Button>
@@ -379,13 +392,14 @@ export function AliasesTab() {
             </div>
             <div className="space-y-2">
               <Label htmlFor="edit-command">Command</Label>
-              <Input
+              <Textarea
                 id="edit-command"
                 placeholder="e.g., ls -lah"
                 value={formData.command}
                 onChange={(e) =>
                   setFormData({ ...formData, command: e.target.value })
                 }
+                rows={3}
               />
             </div>
             <div className="space-y-2">
@@ -395,7 +409,11 @@ export function AliasesTab() {
                   type="button"
                   variant={formData.shared ? "default" : "outline"}
                   onClick={() => setFormData({ ...formData, shared: true })}
-                  className="flex-1"
+                  className={`flex-1 transition-all ${
+                    formData.shared
+                      ? "ring-2 ring-primary/30 shadow-lg font-semibold"
+                      : "opacity-70 hover:opacity-100"
+                  }`}
                 >
                   Shared (versioned)
                 </Button>
@@ -403,7 +421,11 @@ export function AliasesTab() {
                   type="button"
                   variant={!formData.shared ? "default" : "outline"}
                   onClick={() => setFormData({ ...formData, shared: false })}
-                  className="flex-1"
+                  className={`flex-1 transition-all ${
+                    !formData.shared
+                      ? "ring-2 ring-primary/30 shadow-lg font-semibold"
+                      : "opacity-70 hover:opacity-100"
+                  }`}
                 >
                   Local (this machine)
                 </Button>

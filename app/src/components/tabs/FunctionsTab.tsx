@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { Plus, Search, Pencil, Trash2 } from "lucide-react";
-import Editor from "@monaco-editor/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import {
   Table,
@@ -174,7 +174,10 @@ export function FunctionsTab() {
             Manage your ZSH functions across shared and local configurations
           </p>
         </div>
-        <Button onClick={() => setAddDialogOpen(true)}>
+        <Button
+          onClick={() => setAddDialogOpen(true)}
+          className="shadow-lg hover:shadow-xl transition-all hover:scale-105 font-semibold"
+        >
           <Plus className="mr-2 h-4 w-4" />
           Add Function
         </Button>
@@ -302,24 +305,18 @@ export function FunctionsTab() {
             </div>
             <div className="space-y-2">
               <Label htmlFor="add-content">Function Body</Label>
-              <div className="border rounded-md overflow-hidden">
-                <Editor
-                  height="300px"
-                  defaultLanguage="shell"
-                  value={formData.content}
-                  onChange={(value) =>
-                    setFormData({ ...formData, content: value || "" })
-                  }
-                  theme="vs-dark"
-                  options={{
-                    minimap: { enabled: false },
-                    fontSize: 13,
-                    lineNumbers: "on",
-                    scrollBeyondLastLine: false,
-                    automaticLayout: true,
-                  }}
-                />
-              </div>
+              <Textarea
+                id="function-content"
+                placeholder="# Your shell function code here
+# Example:
+# mkdir -p &quot;$1&quot; && cd &quot;$1&quot;"
+                value={formData.content}
+                onChange={(e) =>
+                  setFormData({ ...formData, content: e.target.value })
+                }
+                rows={12}
+                className="font-mono text-sm"
+              />
             </div>
             <div className="space-y-2">
               <Label htmlFor="add-scope">Scope</Label>
@@ -328,7 +325,11 @@ export function FunctionsTab() {
                   type="button"
                   variant={formData.shared ? "default" : "outline"}
                   onClick={() => setFormData({ ...formData, shared: true })}
-                  className="flex-1"
+                  className={`flex-1 transition-all ${
+                    formData.shared
+                      ? "ring-2 ring-primary/30 shadow-lg font-semibold"
+                      : "opacity-70 hover:opacity-100"
+                  }`}
                 >
                   Shared (versioned)
                 </Button>
@@ -336,7 +337,11 @@ export function FunctionsTab() {
                   type="button"
                   variant={!formData.shared ? "default" : "outline"}
                   onClick={() => setFormData({ ...formData, shared: false })}
-                  className="flex-1"
+                  className={`flex-1 transition-all ${
+                    !formData.shared
+                      ? "ring-2 ring-primary/30 shadow-lg font-semibold"
+                      : "opacity-70 hover:opacity-100"
+                  }`}
                 >
                   Local (this machine)
                 </Button>
@@ -375,24 +380,18 @@ export function FunctionsTab() {
           <div className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="edit-content">Function Body</Label>
-              <div className="border rounded-md overflow-hidden">
-                <Editor
-                  height="300px"
-                  defaultLanguage="shell"
-                  value={formData.content}
-                  onChange={(value) =>
-                    setFormData({ ...formData, content: value || "" })
-                  }
-                  theme="vs-dark"
-                  options={{
-                    minimap: { enabled: false },
-                    fontSize: 13,
-                    lineNumbers: "on",
-                    scrollBeyondLastLine: false,
-                    automaticLayout: true,
-                  }}
-                />
-              </div>
+              <Textarea
+                id="function-content"
+                placeholder="# Your shell function code here
+# Example:
+# mkdir -p &quot;$1&quot; && cd &quot;$1&quot;"
+                value={formData.content}
+                onChange={(e) =>
+                  setFormData({ ...formData, content: e.target.value })
+                }
+                rows={12}
+                className="font-mono text-sm"
+              />
             </div>
             <div className="space-y-2">
               <Label htmlFor="edit-scope">Scope</Label>
@@ -401,7 +400,11 @@ export function FunctionsTab() {
                   type="button"
                   variant={formData.shared ? "default" : "outline"}
                   onClick={() => setFormData({ ...formData, shared: true })}
-                  className="flex-1"
+                  className={`flex-1 transition-all ${
+                    formData.shared
+                      ? "ring-2 ring-primary/30 shadow-lg font-semibold"
+                      : "opacity-70 hover:opacity-100"
+                  }`}
                 >
                   Shared (versioned)
                 </Button>
@@ -409,7 +412,11 @@ export function FunctionsTab() {
                   type="button"
                   variant={!formData.shared ? "default" : "outline"}
                   onClick={() => setFormData({ ...formData, shared: false })}
-                  className="flex-1"
+                  className={`flex-1 transition-all ${
+                    !formData.shared
+                      ? "ring-2 ring-primary/30 shadow-lg font-semibold"
+                      : "opacity-70 hover:opacity-100"
+                  }`}
                 >
                   Local (this machine)
                 </Button>
