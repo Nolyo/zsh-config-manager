@@ -36,6 +36,7 @@ alias gca="git commit --amend"
 alias gco="git checkout"
 alias gb="git branch"
 alias glog="git log --oneline --graph --decorate"
+alias pushf="git push --follow-tags origin develop"
 
 # ============================================
 # NAVIGATION

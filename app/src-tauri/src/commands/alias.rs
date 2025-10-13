@@ -103,7 +103,7 @@ pub fn add_alias(name: String, command: String, shared: bool) -> Result<(), Stri
     if !content.ends_with('\n') && !content.is_empty() {
         content.push('\n');
     }
-    content.push_str(&format!("alias {}=\"{}\"\n", name, command));
+    content.push_str(&format!("alias {}='{}'\n", name, command));
 
     // Write back
     fs::write(&file_path, content)
@@ -130,7 +130,7 @@ pub fn update_alias(old_name: String, new_name: String, command: String, shared:
             if let Some(alias) = parse_alias_line(line) {
                 if alias.name == old_name {
                     found = true;
-                    return format!("alias {}=\"{}\"", new_name, command);
+                    return format!("alias {}='{}'", new_name, command);
                 }
             }
             line.to_string()
