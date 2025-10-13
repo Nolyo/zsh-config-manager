@@ -68,3 +68,6 @@ alias ccc="claude -c"
 alias ccr="claude -r"
 alias ccs="claude --dangerously-skip-permissions"
 alias dka="docker kill $(docker ps -q)"
+
+alias fsff="find . -type f | fzf"
+alias fzcd='cd $(find . -type d | fzf)'
