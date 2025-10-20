@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Download, Check, AlertCircle, RefreshCw } from 'lucide-react';
 import { Button } from './ui/button';
 import { AppUpdater, UpdateInfo } from '@/lib/updater';
